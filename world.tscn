@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Protozoa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world.gd" type="Script" id=2]
+[ext_resource path="res://food.tscn" type="PackedScene" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 1
+octaves = 4
+period = 116.7
+persistence = 0.898
+lacunarity = 1.46
+
+[sub_resource type="NoiseTexture" id=2]
+width = 2000
+height = 1500
+seamless = true
+noise = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1478.63, 40.438 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 53.1916, 739.33 )
+
+[node name="world" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="bg" type="Polygon2D" parent="."]
+color = Color( 0.105882, 0.109804, 0.505882, 1 )
+texture = SubResource( 2 )
+polygon = PoolVector2Array( -32.864, -39.4113, 1951.14, -45.4113, 1951.14, 1122.59, -38.864, 1128.59 )
+
+[node name="Protozoa" parent="." instance=ExtResource( 1 )]
+position = Vector2( 338.24, 571.69 )
+rotation = 1.5708
+
+[node name="Protozoa2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 596.622, 205.927 )
+rotation = -2.35619
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 928.09, 1123.03 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 928.09, -40.2598 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -53.6807, 533.479 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1973.69, 508.852 )
+shape = SubResource( 4 )
+
+[node name="Food" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1024.7, 867.414 )
+
+[node name="Food2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 332.479, 918.357 )
+
+[node name="Food3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1519.14, 503.326 )
