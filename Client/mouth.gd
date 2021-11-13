@@ -18,3 +18,6 @@ func _ready():
 
 func _on_mouth_body_entered(food: Node2D):
 	food.queue_free()
+
+func attach():
+	pass
