@@ -18,10 +18,10 @@ seamless = true
 noise = SubResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 1478.63, 40.438 )
+extents = Vector2( 4000, 40 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 53.1916, 739.33 )
+extents = Vector2( 40, 4000 )
 
 [node name="world" type="Node2D"]
 script = ExtResource( 2 )
@@ -29,11 +29,14 @@ script = ExtResource( 2 )
 [node name="bg" type="Polygon2D" parent="."]
 color = Color( 0.105882, 0.109804, 0.505882, 1 )
 texture = SubResource( 2 )
-polygon = PoolVector2Array( -32.864, -39.4113, 1951.14, -45.4113, 1951.14, 1122.59, -38.864, 1128.59 )
+polygon = PoolVector2Array( 0, 0, 8000, 0, 8000, 8000, 0, 8000 )
 
 [node name="Protozoa" parent="." instance=ExtResource( 1 )]
 position = Vector2( 338.24, 571.69 )
 rotation = 1.5708
+
+[node name="Camera2D" type="Camera2D" parent="Protozoa"]
+current = true
 
 [node name="Protozoa2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 596.622, 205.927 )
@@ -42,19 +45,19 @@ rotation = -2.35619
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 928.09, 1123.03 )
+position = Vector2( 4000, 8040 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 928.09, -40.2598 )
+position = Vector2( 4000, -40 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -53.6807, 533.479 )
+position = Vector2( -40, 4000 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1973.69, 508.852 )
+position = Vector2( 8040, 4000 )
 shape = SubResource( 4 )
 
 [node name="Food" parent="." instance=ExtResource( 3 )]
