@@ -1,4 +1,6 @@
+.DS_Store
+Client/.import/
+Server/.import/
 
-.import/
-
-export/protozoa/
+Client/export/protozoa/
+Server/export/server/
