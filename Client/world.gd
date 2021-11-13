@@ -5,6 +5,8 @@ const world_size = 8000
 var editor
 var camera: Camera2D
 const ANIM_DURATION = 1
+var spine_scene = preload("res://spine.tscn")
+var spine
 
 func _ready():
 	set_process_input(true) 
@@ -12,6 +14,12 @@ func _ready():
 	editor.protozoa = $Protozoa
 	editor.visible = false
 	camera = $Protozoa.get_node("Camera2D")
+	
+	spine = spine_scene.instance()
+	$Protozoa.add_child(spine)
+	spine.protozoa = $Protozoa
+	spine.init()
+	spine.visible = false
 
 func _process(delta):
 	$bg.texture_offset.x += delta * 20
@@ -24,6 +32,7 @@ func _process(delta):
 func _input(ev):
 	if ev is InputEventKey and ev.pressed and not ev.echo:
 		editor.visible = !editor.visible
+		spine.visible = editor.visible
 		#camera.position.x = -300 if editor.visible else 0
 		$Tween.seek(10)
 		$Tween.reset_all()
