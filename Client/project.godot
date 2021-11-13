@@ -18,6 +18,10 @@ config/name="Protozoa"
 run/main_scene="res://world.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Server="*res://Singletons/Server.gd"
+
 [display]
 
 window/size/width=1920
