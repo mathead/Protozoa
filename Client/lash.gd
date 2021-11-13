@@ -41,7 +41,7 @@ func _process(delta):
 		var pos = $Line.get_point_position(i)
 		#pos.x = lerp(pos.x, prev_point_pos.x, min(1, delta/0.03))
 		pos.y = -i*3
-		pos = lerp(global_transform.xform_inv(last_pos[i-1]), pos, min(1, delta/0.07))
+		pos = lerp(global_transform.affine_inverse().xform(last_pos[i-1]), pos, min(1, delta/0.07))
 		$Line.set_point_position(i, pos)
 		prev_point_pos = pos
 	save_last_pos()
