@@ -2,6 +2,7 @@ extends Node2D
 
 var parent: RigidBody2D
 export var active = true
+export var image  = false
 export var power = 100
 var charge = 0
 var max_charge = 0.5
@@ -12,7 +13,8 @@ var last_pos = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parent = get_parent()
+	if not image:
+		parent = get_parent()
 	$Line.clear_points()
 	for i in range(30):
 		$Line.add_point(Vector2(0, i*3))
@@ -52,7 +54,7 @@ func save_last_pos():
 		last_pos.append(global_transform.xform($Line.get_point_position(i)))
 
 func _physics_process(delta):
-	if active:
+	if active and not image:
 		charge += delta
 		if charge >= max_charge:
 			parent.apply_impulse(global_position - parent.global_position, Vector2.UP.rotated(global_rotation) * power)
